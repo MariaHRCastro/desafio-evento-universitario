@@ -1,11 +1,14 @@
 package com.maria.eventoUniversitario.entities;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -16,6 +19,11 @@ public class Categoria {
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Integer id;
 	private String descricao;
+	
+	@OneToMany(mappedBy = "categoria")
+	private Set<Atividade> atividades = new HashSet<>();
+	
+	
 	
 	public Categoria() {
 		
@@ -47,6 +55,12 @@ public class Categoria {
 	public int hashCode() {
 		return Objects.hash(id);
 	}
+	
+	
+	public Set<Atividade> getAtividades() {
+		return atividades;
+	}
+
 
 	@Override
 	public boolean equals(Object obj) {
