@@ -1,6 +1,7 @@
 package com.maria.eventoUniversitario.entities;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -31,10 +32,10 @@ public class Atividade {
 	private Categoria categoria;
 	
 	@OneToMany(mappedBy = "atividade")
-	private List<Bloco> blocos = new ArrayList<>();
+	private Set<Bloco> blocos = new HashSet<>();
 	
 	@ManyToMany(mappedBy = "atividades")
-	private List<Participante> participantes = new ArrayList<>();
+	private Set<Participante> participantes = new HashSet<>();
 	
 	public Atividade() {
 		
@@ -81,11 +82,11 @@ public class Atividade {
 	}
 	
 	
-	public List<Bloco> getBlocos() {
+	public Set<Bloco> getBlocos() {
 		return blocos;
 	}
 
-	public List<Participante> getParticipantes() {
+	public Set<Participante> getParticipantes() {
 		return participantes;
 	}
 
